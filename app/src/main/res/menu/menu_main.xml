@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="org.elastos.carrier.chatdemo.MainActivity">
+    <item
+        android:id="@+id/action_scan"
+        android:orderInCategory="100"
+        android:title="@string/action_scan"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_address"
+        android:orderInCategory="100"
+        android:title="@string/action_myAddress"
+        app:showAsAction="never" />
+</menu>
