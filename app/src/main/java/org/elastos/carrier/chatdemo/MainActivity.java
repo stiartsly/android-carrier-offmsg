@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements MessageService.IM
 	private ListView mContactListView;
 	private TextView mTitle;
 	private final static String USERNAME = "userName";
+	private boolean isReady = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +66,8 @@ public class MainActivity extends AppCompatActivity implements MessageService.IM
 				mSimpleCarrier.setSelfInfo(self);
 
 				showText("Carrier is ready. name: " + name);
+
+				isReady = true;
 
 				break;
 			}
@@ -94,7 +97,6 @@ public class MainActivity extends AppCompatActivity implements MessageService.IM
 					showText("onFriendMessage, message: " + recvMessage);
 
 					if (ChatActivity.isActiveChat(userId)) {
-						Log.d(TAG, "================================================================isActiveChat");
 						return;
 					}
 
@@ -192,9 +194,15 @@ public class MainActivity extends AppCompatActivity implements MessageService.IM
 				break;
 			}
 			case R.id.action_address: {
-				Intent intent = new Intent(MainActivity.this, QrAddressActivity.class);
-				intent.putExtra(QrAddressActivity.QRCODETYPE, mSimpleCarrier.getAddress());
-				startActivity(intent);
+				if (isReady) {
+					Intent intent = new Intent(MainActivity.this, QrAddressActivity.class);
+					intent.putExtra(QrAddressActivity.QRCODETYPE, mSimpleCarrier.getAddress());
+					startActivity(intent);
+				}
+				else {
+					showText("the Carrier is not ready");
+				}
+
 				break;
 			}
 			default: {
