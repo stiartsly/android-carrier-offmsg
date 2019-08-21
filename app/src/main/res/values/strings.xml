@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Carrier Offline Demo</string>
+    <string name="action_scan">Scan</string>
+    <string name="action_myAddress">My Address</string>
+</resources>
