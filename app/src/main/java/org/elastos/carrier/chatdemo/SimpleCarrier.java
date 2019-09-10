@@ -178,7 +178,7 @@ public class SimpleCarrier {
 		}
 
 		@Override
-		public void onFriendMessage(Carrier carrier, String from, byte[] message) {
+		public void onFriendMessage(Carrier carrier, String from, byte[] message, boolean isOffline) {
 			Message msg = new Message();
 			msg.what = STATE.FRIENDMESSAGE;
 			Bundle data = new Bundle();
@@ -254,27 +254,27 @@ public class SimpleCarrier {
 				ArrayList<HiveBootstrapNode> hiveArrayList = new ArrayList<>();
 				HiveBootstrapNode hiveNode = new HiveBootstrapNode();
 				hiveNode.setIpv4("52.83.159.189");
-				hiveNode.setPort("9094");
+				hiveNode.setPort("9095");
 				hiveArrayList.add(hiveNode);
 
 				hiveNode = new HiveBootstrapNode();
 				hiveNode.setIpv4("52.83.119.110");
-				hiveNode.setPort("9094");
+				hiveNode.setPort("9095");
 				hiveArrayList.add(hiveNode);
 
 				hiveNode = new HiveBootstrapNode();
 				hiveNode.setIpv4("3.16.202.140");
-				hiveNode.setPort("9094");
+				hiveNode.setPort("9095");
 				hiveArrayList.add(hiveNode);
 
 				hiveNode = new HiveBootstrapNode();
 				hiveNode.setIpv4("18.217.147.205");
-				hiveNode.setPort("9094");
+				hiveNode.setPort("9095");
 				hiveArrayList.add(hiveNode);
 
 				hiveNode = new HiveBootstrapNode();
 				hiveNode.setIpv4("18.219.53.133");
-				hiveNode.setPort("9094");
+				hiveNode.setPort("9095");
 				hiveArrayList.add(hiveNode);
 
 				setHiveBootstrapNodes(hiveArrayList);
