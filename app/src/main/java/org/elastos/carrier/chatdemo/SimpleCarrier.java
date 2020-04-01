@@ -58,8 +58,7 @@ public class SimpleCarrier {
 		ChatHandler handler = new ChatHandler();
 
 		try {
-			Carrier.initializeInstance(options, handler);
-			mCarrier = Carrier.getInstance();
+			mCarrier = Carrier.createInstance(options, handler);
 
 			mCarrier.start(0);
 			synchronized(mCarrier) {
