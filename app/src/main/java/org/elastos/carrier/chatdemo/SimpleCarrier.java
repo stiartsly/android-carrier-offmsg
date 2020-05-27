@@ -15,7 +15,7 @@ import org.elastos.carrier.exceptions.CarrierException;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
 
 public class SimpleCarrier {
 	private static SimpleCarrier sInstance = null;
@@ -58,8 +58,7 @@ public class SimpleCarrier {
 		ChatHandler handler = new ChatHandler();
 
 		try {
-			Carrier.initializeInstance(options, handler);
-			mCarrier = Carrier.getInstance();
+			mCarrier = Carrier.createInstance(options, handler);
 
 			mCarrier.start(0);
 			synchronized(mCarrier) {
@@ -178,7 +177,7 @@ public class SimpleCarrier {
 		}
 
 		@Override
-		public void onFriendMessage(Carrier carrier, String from, byte[] message, boolean isOffline) {
+		public void onFriendMessage(Carrier carrier, String from, byte[] message, Date timestamp, boolean isOffline) {
 			Message msg = new Message();
 			msg.what = STATE.FRIENDMESSAGE;
 			Bundle data = new Bundle();
@@ -251,33 +250,26 @@ public class SimpleCarrier {
 				setBootstrapNodes(arrayList);
 
 				//Hive
-				ArrayList<HiveBootstrapNode> hiveArrayList = new ArrayList<>();
-				HiveBootstrapNode hiveNode = new HiveBootstrapNode();
-				hiveNode.setIpv4("52.83.159.189");
-				hiveNode.setPort("9095");
-				hiveArrayList.add(hiveNode);
+				ArrayList<ExpressNode> expressNodes = new ArrayList<>();
+				ExpressNode expNode = new ExpressNode();
+				expNode.setIpv4("ece00.trinity-tech.io");
+				expNode.setPort("443");
+				expNode.setPublicKey("FyTt6cgnoN1eAMfmTRJCaX2UoN6ojAgCimQEbv1bruy9");
+				expressNodes.add(expNode);
 
-				hiveNode = new HiveBootstrapNode();
-				hiveNode.setIpv4("52.83.119.110");
-				hiveNode.setPort("9095");
-				hiveArrayList.add(hiveNode);
+				expNode = new ExpressNode();
+				expNode.setIpv4("ece01.trinity-tech.io");
+				expNode.setPort("443");
+				expNode.setPublicKey("FyTt6cgnoN1eAMfmTRJCaX2UoN6ojAgCimQEbv1bruy9");
+				expressNodes.add(expNode);
 
-				hiveNode = new HiveBootstrapNode();
-				hiveNode.setIpv4("3.16.202.140");
-				hiveNode.setPort("9095");
-				hiveArrayList.add(hiveNode);
+				expNode = new ExpressNode();
+				expNode.setIpv4("ece01.trinity-tech.cn");
+				expNode.setPort("443");
+				expNode.setPublicKey("FyTt6cgnoN1eAMfmTRJCaX2UoN6ojAgCimQEbv1bruy9");
+				expressNodes.add(expNode);
 
-				hiveNode = new HiveBootstrapNode();
-				hiveNode.setIpv4("18.217.147.205");
-				hiveNode.setPort("9095");
-				hiveArrayList.add(hiveNode);
-
-				hiveNode = new HiveBootstrapNode();
-				hiveNode.setIpv4("18.219.53.133");
-				hiveNode.setPort("9095");
-				hiveArrayList.add(hiveNode);
-
-				setHiveBootstrapNodes(hiveArrayList);
+				setExpressNodes(expressNodes);
 			} catch (Exception e){
 				e.printStackTrace();
 			}
