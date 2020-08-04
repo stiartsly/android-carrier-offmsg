@@ -258,12 +258,6 @@ public class SimpleCarrier {
 				expressNodes.add(expNode);
 
 				expNode = new ExpressNode();
-				expNode.setIpv4("ece01.trinity-tech.io");
-				expNode.setPort("443");
-				expNode.setPublicKey("FyTt6cgnoN1eAMfmTRJCaX2UoN6ojAgCimQEbv1bruy9");
-				expressNodes.add(expNode);
-
-				expNode = new ExpressNode();
 				expNode.setIpv4("ece01.trinity-tech.cn");
 				expNode.setPort("443");
 				expNode.setPublicKey("FyTt6cgnoN1eAMfmTRJCaX2UoN6ojAgCimQEbv1bruy9");
